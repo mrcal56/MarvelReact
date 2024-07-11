@@ -1,0 +1,41 @@
+/* Estilo para las tarjetas de personajes individuales */
+.character-card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: #f9f9f9;
+}
+
+/* Efecto hover para las tarjetas */
+.character-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo para las imágenes de los personajes */
+.character-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Estilo para los nombres de los personajes */
+.character-card h2 {
+    font-size: 1.5em;
+    margin: 8px 0;
+    color: #333;
+}
+
+/* Estilo para las descripciones de los personajes */
+.character-card p {
+    font-size: 1em;
+    color: #666;
+    margin: 0;
+    padding: 0;
+}
