@@ -1,32 +1,44 @@
 .header {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
     background-color: #f0f0f0;
     border-bottom: 1px solid #ccc;
-    padding: 10px 20px;
+    padding: 5px 20px; /* Ajustar el padding vertical */
+    position: sticky;
+    top: 0;
+    z-index: 1001; /* Asegura que el header esté por encima del search-bar */
+    border-radius: 20px; /* Reducir el radio para hacer el header más pequeño */
+    overflow: hidden; /* Asegurar que los tabs no sobresalgan del borde ovalado */
+    max-width: 500px; /* Ajustar el ancho máximo del header */
+    margin: 0 auto; /* Centrar el header horizontalmente */
+    background-color: rgba(12, 11, 11, 0.8); /* Fondo blanco con 80% de opacidad */
+
 }
 
 .header h1 {
-    font-size: 1.8rem;
-    margin: 0 80px; /* Añadir un margen horizontal al título */
+    font-size: 1.5rem; /* Reducir el tamaño del título */
+    margin: 0;
+    padding: 0 10px; /* Ajustar el padding horizontal del título */
+    color: #ccc;
 }
 
 .left-tab,
 .right-tab {
     display: flex;
     align-items: center;
+    padding: 5px 10px; /* Reducir el padding horizontal de los tabs */
 }
 
 .left-tab a,
 .right-tab a {
     text-decoration: none;
-    color: #333;
-    font-size: 1.2rem;
-    margin: 0 10px; /* Ajustar el margen horizontal */
+    color: #e0dede;
+    font-size: 1rem; /* Reducir el tamaño de fuente de los enlaces */
+    margin: 0 3px; /* Reducir el margen entre los enlaces */
 }
 
 .left-tab a:hover,
 .right-tab a:hover {
-    color: #f0bb00; /* Amarillo */
+    color: #d31616; /* Color amarillo al pasar el mouse */
 }

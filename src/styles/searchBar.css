@@ -1,13 +1,26 @@
 .search-bar {
+    position: fixed;
+    top: 30px; /* Ajustar según el tamaño del header */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 800px; /* Ajusta según el diseño deseado */
     display: flex;
     justify-content: center;
-    margin: 20px 0;
+    margin: 20px auto;
+    z-index: 1000; /* Z-index menor que el del header para estar detrás */
+    padding: 10px 0;
+
 }
 
 .search-bar input {
-    width: 300px;
+    width: calc(100% - 20px); /* Ajusta el ancho del input */
+    max-width: 600px; /* Ajusta según el diseño deseado */
     padding: 10px;
     font-size: 1em;
     border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.6); /* Fondo blanco con 80% de opacidad */
+
     border-radius: 5px;
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
 }

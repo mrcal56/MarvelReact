@@ -4,8 +4,10 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #333;
+    background-color: rgba(122, 27, 27, 0.1); /* Fondo blanco con 80% de opacidad */
+
     color: white;
+    
     text-align: center;
     padding: 10px 0;
     z-index: 1000; /* Asegura que esté encima del contenido */
@@ -24,6 +26,7 @@
 .created-by {
     font-size: 1rem;
     margin-top: 5px; /* Espacio entre los derechos reservados y el creado por */
+    color: rgb(255, 245, 245);
 }
 
 .created-by a {
