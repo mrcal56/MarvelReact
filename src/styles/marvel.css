@@ -1,0 +1,11 @@
+/* Estilo para el contenedor principal de la lista de personajes */
+.character-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+    margin: 0 auto; /* Centrar el contenedor principal */
+}
+
+
