@@ -1,14 +1,17 @@
 /* Estilo para las tarjetas de personajes individuales */
 .character-card {
-    border: 0.5px solid #000000;
+    border: 0px solid #fffdfd;
     border-radius: 15px;
-    padding: 16px;
-    margin: 16px;
-    width: 200px;
+    padding: 15px;
+    margin: 50px 10px 30px; /* Ajusta el margen superior e inferior */
+    width: 359px; /* Ajusta el ancho deseado */
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.2s, box-shadow 0.2s;
-    background-color: rgba(255, 255, 255, 0.1); /* Fondo blanco con 80% de opacidad */
+    background-color: rgb(252, 248, 248); /* Fondo blanco con 80% de opacidad */
+    display: flex;
+    flex-direction: column; /* Alinea los elementos en una columna */
+    align-items: center; /* Centra horizontalmente los elementos */
 }
 
 /* Efecto hover para las tarjetas */
@@ -25,11 +28,22 @@
     object-fit: cover;
 }
 
+.character-card .text-container {
+    display: flex; /* Alinea los elementos en una fila */
+    flex-direction: column; /* Alinea los elementos en una columna */
+    align-items: center; /* Centra los elementos horizontalmente */
+    width: 100%; /* Toma todo el ancho de la tarjeta */
+    padding: 0; /* Sin padding extra */
+}
+
+
+
 /* Estilo para los nombres de los personajes */
 .character-card h2 {
     font-size: 1.5em;
-    margin: 8px 0;
+    margin: 3px 0;
     color: #333;
+    flex: 1; /* Toma el espacio disponible en el contenedor */
 }
 
 /* Estilo para las descripciones de los personajes */
@@ -37,13 +51,16 @@
     font-size: 1em;
     color: black;
     margin: 0;
-    padding: 0;
+    padding: 5px 0;
+    text-align: center;
+    width: 100%; /* Asegura que el texto ocupe todo el ancho del contenedor */
+    word-wrap: break-word; /* Ajusta el texto para que no sobresalga */
 }
 
 .button-group {
     display: flex;
     justify-content: center;
-    margin-top: 10px;
+    margin-top: auto; /* Empuja los botones hacia abajo */
 }
 
 .button-group button {
@@ -57,29 +74,41 @@
     align-items: center;
     justify-content: center;
     margin: 0 5px; /* Menos separación entre botones */
-
 }
-
-
 
 .button-group button.info:hover {
     color: #007bff; /* Color del icono al hacer hover */
 }
 
-
 .star-icon {
     /* Estilos para el ícono de estrella */
-    color: rgb(235, 235, 235); /* Color gris por defecto */
-    font-size: 1.5rem;
+    color: rgb(209, 183, 183); /* Color gris por defecto */
+    font-size: 2rem;
     transition: color 0.3s ease; /* Transición suave para el color */
 }
 
 .star-icon.active {
     /* Estilos para el ícono de estrella cuando está activo (amarillo) */
-    color: yellow; /* Color amarillo cuando está activo */
+    color: rgb(235, 235, 23); /* Color amarillo cuando está activo */
 }
 
 .star-icon:hover {
     /* Estilos para hover en el ícono de estrella */
-    color: yellow; /* Cambia el color a amarillo cuando se hace hover */
+    color: rgb(230, 230, 41); /* Cambia el color a amarillo cuando se hace hover */
+}
+
+.view-icon {
+    color: rgb(209, 183, 183); /* Color gris por defecto */
+    font-size: 2rem;
+    transition: color 0.3s ease; /* Transición suave para el color */
+}
+
+.view-icon:hover {
+    /* Estilos para hover en el ícono de estrella */
+    color: rgb(15, 134, 231); /* Cambia el color a amarillo cuando se hace hover */
+}
+
+/* Centrar placeholder en el search bar */
+.search-bar input::placeholder {
+    text-align: center; /* Centra el texto del placeholder */
 }

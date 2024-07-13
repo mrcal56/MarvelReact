@@ -10,6 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header.js';
 import Footer from './components/Footer.js';
 import Favorites from './components/Favorites.js';
+import CharacterDetail from './components/CharacterDetail.js';
 
 
 
@@ -25,9 +26,8 @@ function App() {
           <Routes>
           <Route path="/" element={<MarvelApi />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/character/:characterId" element={<CharacterDetail />} />
           </Routes>
-        
-        
         <Footer/>
       </MarvelProvider>
     </div>

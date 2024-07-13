@@ -4,13 +4,16 @@
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: rgba(122, 27, 27, 0.1); /* Fondo blanco con 80% de opacidad */
 
-    color: white;
+    background-color: rgba(12, 11, 11, 0.01); /* Fondo blanco con 80% de opacidad */
+
+    color: rgb(240, 87, 87);
     
     text-align: center;
-    padding: 10px 0;
+    padding: 7px 0;
     z-index: 1000; /* Asegura que esté encima del contenido */
+    font-weight: bold; /* Letras más gruesas */
+
 }
 
 .rights {
@@ -26,7 +29,7 @@
 .created-by {
     font-size: 1rem;
     margin-top: 5px; /* Espacio entre los derechos reservados y el creado por */
-    color: rgb(255, 245, 245);
+    color: rgb(179, 151, 151);
 }
 
 .created-by a {

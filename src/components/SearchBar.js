@@ -20,7 +20,7 @@ const SearchBar = () => {
                 type="text"
                 value={input}
                 onChange={handleChange}
-                placeholder="Busca A Tu Personaje Favorito De Marvel" />
+                placeholder="Busca a personaje Marvel" />
         </div>
     )
 }

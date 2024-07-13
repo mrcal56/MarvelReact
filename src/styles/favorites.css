@@ -3,6 +3,14 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px;
-    padding: 20px;
+    padding: 40px;
     margin: 0 auto; /* Centrar el contenedor principal */
+}
+
+.favorite-container h2.favorite-title{
+   
+    margin-top: 65px;
+    margin-bottom: 10px;
+    text-align:center; /* Centra el texto horizontalmente */
+
 }

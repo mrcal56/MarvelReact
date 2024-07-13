@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect,useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 import MarvelApiService from "../services/marvelApiService";
 
 const MarvelContext = createContext();
@@ -13,7 +13,7 @@ export const MarvelProvider = ({ children }) => {
         const savedFavorites = localStorage.getItem('favorites');
         return savedFavorites ? JSON.parse(savedFavorites) : [];
     });
-
+    const [characterDetailCache, setCharacterDetailCache] = useState({});
 
     useEffect(() => {
         async function fetchCharacters() {
@@ -38,7 +38,26 @@ export const MarvelProvider = ({ children }) => {
         character.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
-  
+    const fetchCharacterDetail = async (characterId) => {
+        try {
+            if (!characterDetailCache[characterId]) {
+                const character = await MarvelApiService.fetchCharacterById(characterId);
+                if (characterId === character.id.toString()) {
+                    setCharacterDetailCache(prevCache => ({
+                        ...prevCache,
+                        [characterId]: character
+                    }));
+                }
+                return character;
+            } else {
+                return characterDetailCache[characterId];
+            }
+        } catch (error) {
+            console.error(`Error fetching character detail for ID ${characterId}`, error);
+            return null;
+        }
+    }
+
     const addFavorite = (character) => {
         const newFavorites = [...favorites, character]
         setFavorites(newFavorites)
@@ -49,20 +68,13 @@ export const MarvelProvider = ({ children }) => {
         const newFavorites = favorites.filter(fav => fav.id !== characterId)
         setFavorites(newFavorites)
         localStorage.setItem('favorites', JSON.stringify(newFavorites))
-        
     }
 
-
-
-
     return (
-        <MarvelContext.Provider value={{ characters: filteredCharacters, setSearchTerm, setNameStartsWith, addFavorite, removeFavorite, favorites }}>
+        <MarvelContext.Provider value={{ characters: filteredCharacters, setSearchTerm, setNameStartsWith, addFavorite, removeFavorite, favorites, fetchCharacterDetail, characterDetailCache }}>
             {children}
         </MarvelContext.Provider>
     );
 };
 
-
-
 export default MarvelContext;
-

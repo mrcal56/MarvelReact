@@ -1,0 +1,45 @@
+/* characterDetail.css */
+
+.character-detail-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente los elementos */
+    align-items: flex-start; /* Alinea elementos al inicio */
+    padding: 20px; /* Espacio interno */
+}
+
+.character-detail-container img {
+    max-width: 65%; /* Tamaño máximo para la imagen */
+    margin-top: 150px; /* Margen superior */
+    margin-left: 0; /* Eliminar el margen izquierdo para centrar la imagen */
+    margin-right: 20px; /* Margen derecho */
+}
+
+.character-detail-container .detail-text {
+    flex: 1; /* Ocupa el espacio restante */
+    max-width: 700px; /* Ancho máximo para el contenedor de texto */
+    margin-top: 125px; /* Mueve el .detail-text hacia abajo */
+    padding: 0 20px; /* Espaciado interno */
+    display: flex; /* Activa el modelo de caja flexible */
+    flex-direction: column; /* Apila elementos verticalmente */
+    align-items: center; /* Centra horizontalmente los elementos */
+}
+
+.character-detail-container h2 {
+    margin-bottom: 10px; /* Espacio inferior */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+.character-detail-container p {
+    margin-top: 10px; /* Espacio superior */
+    margin-bottom: 0; /* Elimina el margen inferior */
+    white-space: pre-line; /* Muestra el texto con saltos de línea */
+    text-align: center; /* Centra el texto horizontalmente */
+}
+
+@media (min-width: 1024px) {
+    .character-detail-container img {
+        max-width: 450px; /* Tamaño máximo de la imagen para pantallas más grandes */
+        margin-left: 0; /* Eliminar el margen izquierdo para centrar la imagen */
+        margin-right: 20px; /* Margen derecho */
+    }
+}

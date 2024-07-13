@@ -18,7 +18,7 @@ const MarvelApiService = {
                 hash: hash,
                 limit: limit,
                 offset: offset,
-                orderBy: 'name', // ordena personajes por nombre
+                orderBy: '-name', 
                 
             };
 
@@ -33,6 +33,28 @@ const MarvelApiService = {
             return response.data.data.results;
         }catch (error){
             console.error ('Error buscando personajes',error)
+            throw error;
+
+        }
+    },
+
+
+    async fetchCharacterById( characterId ) {
+        const ts = new Date().getTime().toString();
+        const hash = md5(ts + privateKey + publicKey)
+
+        try{
+            const response =  await axios.get(`${baseURL}/${characterId}`,{
+                params : {
+                    ts: ts,
+                    apikey: publicKey,
+                    hash: hash
+                }
+            });
+            
+            return response.data.data.results[0];
+        }catch (error){
+            console.error(`Error buscando personaje con ID ${characterId}`,error)
             throw error;
 
         }
