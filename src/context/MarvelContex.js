@@ -7,36 +7,35 @@ export const useMarvelContext = () => useContext(MarvelContext);
 
 export const MarvelProvider = ({ children }) => {
     const [characters, setCharacters] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
     const [nameStartsWith, setNameStartsWith] = useState('');
     const [favorites, setFavorites] = useState(() => {
         const savedFavorites = localStorage.getItem('favorites');
         return savedFavorites ? JSON.parse(savedFavorites) : [];
     });
     const [characterDetailCache, setCharacterDetailCache] = useState({});
+    const [defaultCharacters, setDefaultCharacters] = useState([]);
 
     useEffect(() => {
-        async function fetchCharacters() {
+        const fetchCharacters = async () => {
             try {
-                let results = [];
-                if (nameStartsWith && nameStartsWith.trim() !== '') {
-                    results = await MarvelApiService.fetchCharacters(80, 0, nameStartsWith);
+                if (nameStartsWith.trim() === '') {
+                    // Fetch default characters when the search term is empty
+                    const results = await MarvelApiService.fetchCharacters(30, 0);
+                    setDefaultCharacters(results);
+                    setCharacters(results);
                 } else {
-                    results = await MarvelApiService.fetchCharacters(80, 0);
+                    // Fetch characters based on search term
+                    const results = await MarvelApiService.fetchCharacters(80, 0, nameStartsWith);
+                    setCharacters(results);
                 }
-                setCharacters(results);
             } catch (error) {
-                console.error(error);
+                console.error("Error fetching characters:", error);
                 setCharacters([]);
             }
-        }
+        };
 
         fetchCharacters();
     }, [nameStartsWith]);
-
-    const filteredCharacters = characters.filter(character =>
-        character.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
 
     const fetchCharacterDetail = async (characterId) => {
         try {
@@ -59,19 +58,28 @@ export const MarvelProvider = ({ children }) => {
     }
 
     const addFavorite = (character) => {
-        const newFavorites = [...favorites, character]
-        setFavorites(newFavorites)
-        localStorage.setItem('favorites', JSON.stringify(newFavorites))
+        const newFavorites = [...favorites, character];
+        setFavorites(newFavorites);
+        localStorage.setItem('favorites', JSON.stringify(newFavorites));
     }
 
     const removeFavorite = (characterId) => {
-        const newFavorites = favorites.filter(fav => fav.id !== characterId)
-        setFavorites(newFavorites)
-        localStorage.setItem('favorites', JSON.stringify(newFavorites))
+        const newFavorites = favorites.filter(fav => fav.id !== characterId);
+        setFavorites(newFavorites);
+        localStorage.setItem('favorites', JSON.stringify(newFavorites));
     }
 
     return (
-        <MarvelContext.Provider value={{ characters: filteredCharacters, setSearchTerm, setNameStartsWith, addFavorite, removeFavorite, favorites, fetchCharacterDetail, characterDetailCache }}>
+        <MarvelContext.Provider value={{ 
+            characters, 
+            setNameStartsWith, 
+            addFavorite, 
+            removeFavorite, 
+            favorites, 
+            fetchCharacterDetail, 
+            characterDetailCache, 
+            defaultCharacters
+        }}>
             {children}
         </MarvelContext.Provider>
     );

@@ -9,8 +9,8 @@ const Header = () => {
             <div className="left-tab">
                 <Link to='/'>Home</Link>
             </div>
-            <div class='content'>
-            <div class='visible'>
+            <div className='content'>
+            <div className='visible'>
             <p>Marvel</p>
             <ul>
             <li>World</li>

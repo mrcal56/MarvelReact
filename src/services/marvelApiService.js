@@ -1,8 +1,8 @@
 import axios from "axios";
 import md5 from "md5";
 
-const publicKey = '723508964020f4e3b6a4c4e754fff222'
-const privateKey = 'af7351300c1ee3d0361f9fbe2697f1746ed26cd1'
+const publicKey = process.env.REACT_APP_MARVEL_PUBLIC_KEY;
+const privateKey = process.env.REACT_APP_MARVEL_PRIVATE_KEY;
 const baseURL = 'https://gateway.marvel.com/v1/public/characters'
 
 const MarvelApiService = {
@@ -18,7 +18,7 @@ const MarvelApiService = {
                 hash: hash,
                 limit: limit,
                 offset: offset,
-                orderBy: '-name', 
+                orderBy: 'name', 
                 
             };
 
@@ -54,7 +54,16 @@ const MarvelApiService = {
             
             return response.data.data.results[0];
         }catch (error){
-            console.error(`Error buscando personaje con ID ${characterId}`,error)
+            if (error.response) {
+                console.error(`Response data for ID ${characterId}:`, error.response.data);
+                console.error('Response status:', error.response.status);
+                console.error('Response headers:', error.response.headers);
+            } else if (error.request) {
+                console.error(`Request data for ID ${characterId}:`, error.request);
+            } else {
+                console.error('Error', error.message);
+            }
+            console.error('Config:', error.config);
             throw error;
 
         }
