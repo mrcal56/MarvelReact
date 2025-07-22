@@ -1,11 +1,8 @@
 import axios from "axios";
-import md5 from "md5";
+import md5 from "../utils/md5"; // Usa la versión corregida con crypto-js
 
 const publicKey = process.env.REACT_APP_MARVEL_PUBLIC_KEY;
 const privateKey = process.env.REACT_APP_MARVEL_PRIVATE_KEY;
-
-console.log("🔍 MARVEL PUBLIC KEY:", publicKey);
-console.log("🛡️ MARVEL PRIVATE KEY:", privateKey);
 
 const baseURL = 'https://gateway.marvel.com/v1/public/characters'
 
@@ -13,7 +10,6 @@ const MarvelApiService = {
     async fetchCharacters(limit=80 , offset=0 , nameStartsWith = '' ) {
         const ts = new Date().getTime().toString();
         const hash = md5(ts + privateKey + publicKey)
-
         try{
             
               let params = {
