@@ -1,5 +1,7 @@
-import md5 from "md5";
+import CryptoJS from "crypto-js";
 
-export default function generateMD5Hash(data){
-    return md5(data);
-}
+const md5 = (value) => {
+  return CryptoJS.MD5(value).toString();
+};
+
+export default md5;
